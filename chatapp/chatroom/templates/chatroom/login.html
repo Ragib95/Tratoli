@@ -1,0 +1,42 @@
+{% load staticfiles %}
+
+<html>
+
+<head>
+    <title>Chat Panel</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'chat.css' %}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="list-inline col-md-4 right1">
+
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'messages' %}">Messages</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+            <ul class="right list-inline col-md-8">
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'signup' %}">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+<form method="post" action=".">
+    {% csrf_token %}
+
+    <input type="text" name="username"/>
+    <input type="password" name="password"/>
+
+    <input type="submit" value="Login"/>
+</form>
+
